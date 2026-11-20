@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Учёт личных расходов</title>
+    <link rel="stylesheet" href="/expense-tracker/style.css">
+</head>
+<body>
+<main class="container">
+    <h1>Учёт личных расходов</h1>
+
+    <section>
+        <h2>Подтверждённые расходы</h2>
+        <ul class="totals">
+            <li>Продукты: {{food_total}} ₽</li>
+            <li>Транспорт: {{transport_total}} ₽</li>
+            <li>Прочее: {{other_total}} ₽</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Добавить расход</h2>
+        <form method="post" action="/expenses/create" class="form-row">
+            <label>
+                Категория
+                <select name="category" required>
+                    <option value="food">Продукты</option>
+                    <option value="transport">Транспорт</option>
+                    <option value="other">Прочее</option>
+                </select>
+            </label>
+            <label>
+                Сумма
+                <input name="amount" type="number" min="1" max="100000" required>
+            </label>
+            <button type="submit">Добавить</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Список расходов</h2>
+        <form method="get" action="/expenses" class="filter">
+            <select name="category">
+                <option value="">Все категории</option>
+                {{#categories}}
+                <option value="{{category}}"{{selected}}>{{category_name}}</option>
+                {{/categories}}
+            </select>
+            <button type="submit">Фильтровать</button>
+            {{#reset}}<a href="/expenses">Сбросить</a>{{/reset}}
+        </form>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>ID</th><th>Категория</th><th>Сумма</th><th>Статус</th><th></th></tr>
+                </thead>
+                <tbody>
+                {{#expenses}}
+                <tr>
+                    <td>{{expense_id}}</td>
+                    <td>{{category_name}}</td>
+                    <td>{{amount}} ₽</td>
+                    <td><span class="status {{status}}">{{status_name}}</span></td>
+                    <td><a href="/expenses/details?id={{expense_id}}">Открыть</a></td>
+                </tr>
+                {{/expenses}}
+                {{#empty}}<tr><td colspan="5" class="empty">Расходов пока нет</td></tr>{{/empty}}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+</html>

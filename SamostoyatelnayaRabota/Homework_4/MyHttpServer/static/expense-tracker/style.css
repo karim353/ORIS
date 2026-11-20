@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #222;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+a {
+    color: blue;
+}
+
+.totals {
+    line-height: 1.8;
+}
+
+.form-row,
+.filter {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.form-stack {
+    max-width: 400px;
+}
+
+label {
+    display: block;
+}
+
+.form-stack label {
+    margin-bottom: 15px;
+}
+
+input,
+select,
+button {
+    display: block;
+    padding: 7px;
+    margin-top: 5px;
+    font: inherit;
+    border: 1px solid #999;
+}
+
+button {
+    background: #eee;
+    cursor: pointer;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #aaa;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.approved {
+    color: green;
+}
+
+.pending {
+    color: #946200;
+}
+
+.empty {
+    text-align: center;
+}

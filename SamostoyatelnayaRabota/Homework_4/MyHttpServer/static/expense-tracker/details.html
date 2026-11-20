@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Расход №{{expense_id}}</title>
+    <link rel="stylesheet" href="/expense-tracker/style.css">
+</head>
+<body>
+<main class="container">
+    <p><a href="/expenses">← Вернуться к списку</a></p>
+    <section class="details">
+        <h1>Расход №{{expense_id}}</h1>
+        <p>Категория: {{category_name}}</p>
+        <p>Сумма: {{amount}} ₽</p>
+        <p>Текущий статус: <span class="status {{status}}">{{status_name}}</span></p>
+        <h2>Изменить расход</h2>
+        <form method="post" action="/expenses/update?id={{expense_id}}" class="form-stack">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_redirect" value="/expenses/details?id={{expense_id}}">
+            <label>
+                Категория
+                <select name="category" required>
+                    {{#categories}}
+                    <option value="{{category}}"{{selected}}>{{category_name}}</option>
+                    {{/categories}}
+                </select>
+            </label>
+            <label>
+                Сумма
+                <input name="amount" type="number" min="1" max="100000" value="{{amount_value}}" required>
+            </label>
+            <label>
+                Статус
+                <select name="status" required>
+                    <option value="pending"{{pending_selected}}>Ожидает подтверждения</option>
+                    <option value="approved"{{approved_selected}}>Подтверждён</option>
+                </select>
+            </label>
+            <button type="submit">Сохранить</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
