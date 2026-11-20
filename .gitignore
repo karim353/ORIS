@@ -1,0 +1,17 @@
+.vs/
+.idea/
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+*.zip
+*.eml
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+.local/
+.taste-skill/
+/CLAUDE.md
+/SemesterProject/
